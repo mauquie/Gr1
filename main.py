@@ -8,7 +8,7 @@ class Partie:
     def __init__(self):
         pass
 
-    def Jouer(self,nom = "Joueur", main = None, tapis = 500):#Crée un nouveau joueur dans la liste de joueur
+    def Jouer(self,nom = "Joueur", main = None, tapis = 500):#Crée un nouveau joueur dans la liste de joueurs
         liste_Joueurs =Joueur(nom, main, tapis)
         Partie.liste_Joueurs.append(liste_Joueurs)
 
@@ -20,13 +20,13 @@ class Carte():
         
 class Croupier(Carte):
     """
-        La classe croupier prend comme parametre:
-            paquet -> paquet de 52 carte
+        La classe croupier prend comme paramètre:
+            paquet -> paquet de 52 cartes
     """
     def __init__(self):
         Carte.__init__(self)
         self.paquet = []
-    def rassembler(self): #Méthode qui crée 52 cartes non mélangé
+    def rassembler(self): #Méthode qui crée 52 cartes non mélangées
         for i in range(0, len(self.COULEURS)):
             for j in range(0, len(self.RANGS)):
                 self.paquet.append(self.COULEURS[i] + self.RANGS[j])
@@ -38,7 +38,7 @@ class Croupier(Carte):
         rand = randint(1, 50)
         t_paquet = []
         for i in range (0, rand):
-            _paquett.append(self.paquet[0])
+            t_paquet.append(self.paquet[0])
             self.paquet.pop(0)
         for i in range (0, len(t_paquet)):
             self.paquet.append(t_paquet[0])
@@ -60,7 +60,7 @@ class Joueur(Croupier):
         self.tapis=tapis#tapis étant le nombre de jetons
 
     def vider_main(self):#on supprime la main actuelle
-        for i in range(0,5):#le mode de jeu est de 5 carte privatives...
+        for i in range(0,5):#le mode de jeu est de 5 cartes privatives...
             self.main.pop()#on les supprimes
 
     def recevoir(self):
